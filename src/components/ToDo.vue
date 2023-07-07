@@ -29,7 +29,7 @@ export default {
         localStorage.setItem('todos', JSON.stringify(this.todoItems))
     },
     mounted() {
-        // this.todoItems = JSON.parse(localStorage.getItem('todos'))
+        localStorage.getItem('todos') !== null ? this.todoItems = JSON.parse(localStorage.getItem('todos')) : void 0
         console.log(this.todoItems);
     },
     methods: {
@@ -38,9 +38,8 @@ export default {
                 title: this.newTodo,
                 isdone: false
             }
-            let todoItems = []
             const input = document.querySelector('.add_input')
-            this.newTodo.trim() !== '' ? this.todoItems = this.todoItems || [] ? todoItems += todoObj : this.todoItems.push(todoObj) : input.classList.add('error');
+            this.newTodo.trim() !== '' ? this.todoItems.push(todoObj) : input.classList.add('error');
             input.classList.contains('error') ? setTimeout(() => { input.classList.remove('error') }, 500) : void 0;
             this.newTodo = '';
         },
