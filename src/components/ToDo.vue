@@ -1,5 +1,6 @@
 <template>
-    <div class="hello">
+    <div>
+        <h1 class="title">Hello, {{ username }}</h1>
         <div class="add_wrapper">
             <input v-model="newTodo" type="text" class="add_input" placeholder="Write here a new task...">
             <button @click="addTodo" class="btn">Add+</button>
@@ -21,12 +22,16 @@ export default {
     name: 'ToDo',
     data() {
         return {
-            todoItems: [{ title: 'Go to the shop', isdone: false }],
-            newTodo: ''
+            todoItems: [{ title: 'Create new task...', isdone: false }],
+            newTodo: '',
+            username: ''
         }
     },
     updated() {
         localStorage.setItem('todos', JSON.stringify(this.todoItems))
+    },
+    beforeMount() {
+        localStorage.getItem('username') !== null ? this.username = localStorage.getItem('username') : async () => {this.username = await prompt('What is your name?')}
     },
     mounted() {
         localStorage.getItem('todos') !== null ? this.todoItems = JSON.parse(localStorage.getItem('todos')) : void 0
