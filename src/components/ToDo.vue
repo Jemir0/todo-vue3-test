@@ -39,7 +39,8 @@ export default {
                 isdone: false
             }
             let todoItems = []
-            this.newTodo.trim() !== '' ? this.todoItems = this.todoItems || [] ? todoItems += todoObj : this.todoItems.push(todoObj) : document.querySelector('.add_input').classList.add('error');
+            const input = document.querySelector('.add_input')
+            this.newTodo.trim() !== '' ? this.todoItems = this.todoItems || [] ? todoItems += todoObj : this.todoItems.push(todoObj) : input.classList.add('error');
             input.classList.contains('error') ? setTimeout(() => { input.classList.remove('error') }, 500) : void 0;
             this.newTodo = '';
         },
