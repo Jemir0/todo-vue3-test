@@ -38,7 +38,7 @@ export default {
                 isdone: false
             }
             const input = document.querySelector('.add_input');
-            this.newTodo.trim() !== '' ? this.todoItems.push(todoObj) : input.classList.add('error');
+            this.newTodo.trim() !== '' ? this.todoItems = this.todoItems || [] ? this.todoItems.push(todoObj) : console.log('Arr is empty') : input.classList.add('error');
             input.classList.contains('error') ? setTimeout(() => { input.classList.remove('error') }, 500) : void 0;
             this.newTodo = '';
         },
