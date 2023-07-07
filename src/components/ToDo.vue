@@ -29,7 +29,7 @@ export default {
         localStorage.setItem('todos', JSON.stringify(this.todoItems))
     },
     mounted() {
-        this.todoItems = JSON.parse(localStorage.getItem('todos'))
+        // this.todoItems = JSON.parse(localStorage.getItem('todos'))
         console.log(this.todoItems);
     },
     methods: {
