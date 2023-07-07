@@ -8,7 +8,7 @@
             <li class="todo_item" v-for="(todo, index) in todoItems" :key="index">
                 <div class="wrapper">
                     <input v-model="todo.isdone" class="checkbox" type="checkbox">
-                    <p class="todo_title">{{ todo.title }}</p>
+                    <p :class="`todo_title ${todo.isdone && 'done'}`">{{ todo.title }}</p>
                 </div>
                 <button @click="deleteTodo(index)" class="btn">Delete</button>
             </li>
@@ -30,7 +30,6 @@ export default {
     },
     mounted() {
         localStorage.getItem('todos') !== null ? this.todoItems = JSON.parse(localStorage.getItem('todos')) : void 0
-        console.log(this.todoItems);
     },
     methods: {
         addTodo() {
@@ -112,6 +111,11 @@ input[type="checkbox"] {
     padding-inline: 15px;
     border-radius: 15px;
     box-shadow: 0 0 5px #000000a0;
+}
+
+.done {
+    text-decoration: line-through;
+    color: #888888;
 }
 
 .btn {
