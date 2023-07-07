@@ -13,8 +13,6 @@
                 <button @click="deleteTodo(index)" class="btn">Delete</button>
             </li>
         </ul>
-        <h2>We have {{ totalTodo }} stuffs</h2>
-        <h2>We need to finish {{ unfinishedTasks }} stuffs</h2>
     </div>
 </template>
   
@@ -47,19 +45,10 @@ export default {
         deleteTodo(index) {
             this.todoItems.splice(index, 1)
         }
-    },
-    computed: {
-        totalTodo() {
-            return this.todoItems.length;
-        },
-        unfinishedTasks() {
-            return this.todoItems.filter(el => !el.isdone).length;
-        }
     }
 }
 </script>
-  
-  <!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
 ul {
     list-style-type: none;
