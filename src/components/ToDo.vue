@@ -1,16 +1,16 @@
 <template>
     <div>
         <div class="add_wrapper">
-            <input v-model="newTodo" type="text" class="add_input" placeholder="Write here a new task...">
+            <input v-model="newTodo" @keyup.enter="addTodo" type="text" class="add_input" placeholder="Write here a new task...">
             <button @click="addTodo" class="btn">Add+</button>
         </div>
         <ul class="todo_list">
             <li class="todo_item" v-for="(todo, index) in todoItems" :key="index">
                 <div class="wrapper">
-                    <input v-model="todo.isdone" class="checkbox" type="checkbox">
+                    <input v-model="todo.isdone" class="checkbox marg" type="checkbox">
                     <p :class="`todo_title ${todo.isdone && 'done'}`">{{ todo.title }}</p>
                 </div>
-                <button @click="deleteTodo(index)" class="btn">Delete</button>
+                <button @click="deleteTodo(index)" class="btn marg">Delete</button>
             </li>
         </ul>
     </div>
@@ -50,6 +50,10 @@ export default {
 </script>
 
 <style scoped>
+* {
+    box-sizing: border-box;
+}
+
 ul {
     list-style-type: none;
     padding: 0;
@@ -105,7 +109,6 @@ input[type="checkbox"] {
     align-items: center;
     gap: 30px;
     margin: 15px 0;
-    padding-inline: 15px;
     border-radius: 15px;
     box-shadow: 0 0 5px #000000a0;
 }
@@ -133,6 +136,10 @@ input[type="checkbox"] {
 
 .btn:active {
     background-color: #1546a6;
+}
+
+.marg {
+    margin: 15px;
 }
 
 .add_input {
