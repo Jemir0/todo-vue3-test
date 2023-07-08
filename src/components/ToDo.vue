@@ -88,6 +88,7 @@ input[type="checkbox"] {
 }
 
 .todo_list {
+    width: 90%;
     max-width: 500px;
     margin-inline: auto;
     display: flex;
